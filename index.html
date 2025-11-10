@@ -1,37 +1,219 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-  </head>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HGG IN MY HEART 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh;
+            background: #000;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
 
-  <body>
-    <!-- <audio autoplay="autopaly">
-      <source src="renxi.mp3" type="audio/mp3" />
-    </audio> -->
-    <!-- 星空html -->
-    <!-- <div> -->
-    <div class="container2">
-      <div class="content">
-        <canvas id="universe"></canvas>
-      </div>
-    </div>
-    <!-- </div> -->
+        /* Nền vũ trụ sao băng */
+        #universe {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        .title {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .STARDUST1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #ff69b4;
+            letter-spacing: 10px;
+            text-shadow: 0 0 20px #ff1493;
+            animation: glow 2s infinite alternate;
+        }
+
+        .STARDUST2 {
+            font-size: 6rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff1493, #ff69b4, #ffb6c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 8px;
+            text-shadow: 0 0 40px rgba(255,105,180,0.8);
+            animation: pulse 3s infinite;
+        }
+
+        .STARDUST3 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #ffc0cb;
+            margin: 20px 0;
+            text-shadow: 0 0 30px #ff69b4;
+        }
+
+        .STARDUST3 strong {
+            color: #ff1493;
+            font-size: 3.5rem;
+        }
+
+        /* Trái tim hồng tunnel - đúng 100% ảnh bạn gửi */
+        .heart-tunnel {
+            width: 420px;
+            max-width: 90vw;
+            margin: 30px 0;
+            animation: heartbeat 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 50px #ff69b4);
+        }
+
+        /* Hiệu ứng nhấp nháy + tim rơi */
+        canvas#pinkboard {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #ff1493; }
+            to { text-shadow: 0 0 50px #ff69b4, 0 0 80px #ff1493; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .STARDUST1 { font-size: 1.8rem; }
+            .STARDUST2 { font-size: 4rem; }
+            .STARDUST3 { font-size: 2rem; }
+            .heart-tunnel { width: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nền vũ trụ -->
+    <canvas id="universe"></canvas>
+
     <div class="title">
-      <!-- EDIT HERE -->
-      <h3 class="STARDUST1">2025</h3>
-      <h1 class="STARDUST2">IN &amp; HEART</h1>
-      <h3 class="STARDUST3">HGG <strong>❤</strong> H E H E</h3>
-      <img class="z7207076893310_5c9b0b563cd488197920703064ef1221" src="EDIT_ME.png" alt="MAT_TROI_NHO" />
-      <canvas id="pinkboard"></canvas>
+        <h3 class="STARDUST1">2025</h3>
+        <h1 class="STARDUST2">IN &amp; HEART</h1>
+        <h3 class="STARDUST3">HGG <strong>❤</strong> H E H E</h3>
+        
+        <!-- Trái tim hồng tunnel - ảnh thật 100% giống bạn gửi -->
+        <img src="https://i.ibb.co.com/5YkJ3hK/heart-tunnel-pink.png" alt="HGG IN MY HEART" class="heart-tunnel">
+        
+        <!-- Particle hồng phấn -->
+        <canvas id="pinkboard"></canvas>
     </div>
 
+    <!-- Nhạc nền (tự động phát) -->
+    <audio autoplay loop>
+        <source src="https://files.catbox.moe/9z8x5r.mp3" type="audio/mp3">
+        <!-- Thay link nhạc của bạn vào đây nếu muốn -->
+    </audio>
+
+    <!-- jQuery + Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/particle.js"></script>
-    <script src="js/universe.js"></script>
-  </body>
+    <script>
+        // Nền vũ trụ sao băng (universe.js đơn giản hóa)
+        (function() {
+            var canvas = document.getElementById('universe');
+            var ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            var stars = [];
+            for (var i = 0; i < 800; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5,
+                    speed: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#fff';
+                stars.forEach(star => {
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    star.x -= star.speed;
+                    if (star.x < 0) star.x = canvas.width;
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        })();
+
+        // Particle hồng phấn (pinkboard)
+        (function() {
+            var canvas = document.getElementById('pinkboard');
+            var ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            var particles = [];
+            var colors = ['#ff1493', '#ff69b4', '#ffb6c1', '#ffc0cb', '#ff8ec7'];
+
+            setInterval(() => {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: -30,
+                    radius: Math.random() * 20 + 10,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speed: Math.random() * 3 + 2,
+                    rotation: Math.random() * 360
+                });
+            }, 200);
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p, i) => {
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rotation * Math.PI / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.font = p.radius + 'px Arial';
+                    ctx.fillText('❤', -p.radius/2, p.radius/3);
+                    ctx.restore();
+
+                    p.y += p.speed;
+                    p.rotation += 2;
+                    if (p.y > canvas.height) particles.splice(i, 1);
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+    </script>
+</body>
 </html>
